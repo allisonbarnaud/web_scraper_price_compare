@@ -1,0 +1,16 @@
+{
+  "name": "web_scraper_price_compare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AA",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cheerio": "^1.0.0-rc.3",
+    "node-html-parser": "^2.0.0"
+  }
+}
