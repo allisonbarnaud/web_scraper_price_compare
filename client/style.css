@@ -1,0 +1,33 @@
+
+body {
+    background-color: lightblue;
+}
+
+p {
+    font-size: 25px;
+    margin: 30px 20px 20px;
+    text-align: center;
+    color: gray;
+}
+h1 {
+    font-family: italic;
+    color: gray;
+
+}
+
+.user-form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: center;
+    color: gray;
+    margin-top: 50px;
+}
+.container {
+    text-align: center;
+    word-spacing: 60px;
+    margin-top: 50px;
+
+}
