@@ -10,13 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
-<<<<<<< HEAD
-    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
-    "node-html-parser": "^2.0.0"
-=======
-    "node-html-parser": "^2.0.0",
     "puppeteer": "^5.4.1"
->>>>>>> updated web scraper
   }
 }
