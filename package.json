@@ -2,15 +2,26 @@
   "name": "web_scraper_price_compare",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "AA",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allisonbarnaud/web_scraper_price_compare.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allisonbarnaud/web_scraper_price_compare/issues"
+  },
+  "homepage": "https://github.com/allisonbarnaud/web_scraper_price_compare#readme",
   "dependencies": {
     "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "pg": "^8.5.0",
     "puppeteer": "^5.4.1"
   }
 }
