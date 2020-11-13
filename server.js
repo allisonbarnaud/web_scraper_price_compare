@@ -8,6 +8,8 @@ const products = require('./api/products.js')
 const categories = require('./api/categories.js')
 const data = require('./api/data.js')
 
+
+
 app.use(logger)
 app.use(express.static('client'))
 app.use(bodyParser.json())
@@ -17,6 +19,19 @@ app.use('/api/websites', websites)
 app.use('/api/products', products)
 app.use('/api/categories', categories)
 app.use('/api/data', data)
+// routes
+
+app.get('/api/websites', (req, res) => {
+    res.send('laptops page')
+})
+
+// app.get('/smartphones.html', (req, res) => {
+//     res.send(`phones page ${findAllProducts()}`)
+// })
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
