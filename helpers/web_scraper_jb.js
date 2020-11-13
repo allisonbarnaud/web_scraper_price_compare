@@ -15,7 +15,7 @@ async function scrapeProductJB(url) {
         // variable declaration
     const el2 = await page.$('.product-cta .simple .price');
     const el3 = await page.$('.sale');
-    const el8 = await page.$('.sale-label');
+    const el7 = await page.$('.sale-label');
 
     // get the product price
     if (el2 === null || el2 === undefined) {
@@ -31,7 +31,7 @@ async function scrapeProductJB(url) {
     if (el8 === null || el8 === undefined) {
         var discount = null
     } else {
-        var discountSale = await el8.getProperty('textContent');
+        var discountSale = await el7.getProperty('textContent');
         var discounted = await discountSale.jsonValue();
         var discount = await discounted.split(' ')[0];
     }
