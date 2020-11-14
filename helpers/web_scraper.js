@@ -1,29 +1,30 @@
 const puppeteer = require('puppeteer')
 
 // find and grab all product page url's for queried item
-async function scrape(url) {
-    var arr = []
+async function HNUrlScrape(url) {
+    var urlArr = []
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(url)
 
     const el = await page.$$('.product-item .product-info-item .info a');
-    el.forEach(async (element, index) =>  {
+
+    for (const [index, element] of el.entries()) {
         
         const text = await element.getProperty('href');
         const productUrl = await text.jsonValue();
 
-        arr.push(productUrl)
+        urlArr.push(productUrl)
 
         if (index == el.length-1){
             browser.close()
-            console.log(arr)
+            console.log(urlArr)
         }
-    })   
+    } 
 }
 
 // find and grab all required information to compare
-async function innerScrape(url) {
+async function HNProductScrape(url) {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(url)
@@ -54,7 +55,9 @@ async function innerScrape(url) {
         discount = parseFloat(discount.slice(1))
     }
 
-    
+    const el6 = await page.$('#breadcrumbs > li:nth-child(6) > a')
+    const text5 = await el6.getProperty('textContent')
+    const category = await text5.jsonValue()
     
 
     //grabs rating of product
@@ -65,9 +68,11 @@ async function innerScrape(url) {
     
     //close connection request and displays information
     browser.close()
-    console.log({name, img, price, discount, rating})
+    HNProductInfo = {name, img, price, discount, rating, category}
+    console.log(HNProductInfo)
 }
 
-// scrape('https://www.harveynorman.com.au/catalogsearch/result/?q=macbook')
 
-innerScrape('https://www.harveynorman.com.au/lenovo-ideapad-14-inch-i5-1035g1-8gb-256gb-ssd-laptop.html')
+HNUrlScrape('https://www.harveynorman.com.au/catalogsearch/result/?q=macbook')
+
+HNProductScrape('https://www.harveynorman.com.au/logitech-mx-master-3-wireless-mouse-graphite.html')
