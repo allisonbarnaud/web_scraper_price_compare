@@ -2,26 +2,50 @@ const puppeteer = require('puppeteer')
 
 // find and grab all product page url's for queried item
 async function HNUrlScrape(url) {
+    var result = []
+
     var urlArr = []
+    var imgArr = []
+    var nameArr = []
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(url)
 
     const el = await page.$$('.product-item .product-info-item .info a');
+    const el2 = await page.$$('.product-item .product-info-item .photo-box a img')
 
     for (const [index, element] of el.entries()) {
         
         const text = await element.getProperty('href');
         const productUrl = await text.jsonValue();
 
+        const text3 = await element.getProperty('textContent')
+        const name = await text3.jsonValue();
+
         urlArr.push(productUrl)
+        nameArr.push(name)
 
         if (index == el.length-1){
-            browser.close()
-            // console.log(urlArr)
-            return urlArr
+            result.push(urlArr)
+            result.push(nameArr)
         }
     } 
+
+    for (const [index2, element2] of el2.entries()) {
+
+        const text2 = await element2.getProperty('src');
+        const productImg = await text2.jsonValue();
+
+        imgArr.push(productImg)
+
+        if (index2 == el2.length-1){
+            browser.close()
+            result.push(imgArr)
+
+            return result
+        }
+
+    }
 }
 
 // find and grab all required information to compare

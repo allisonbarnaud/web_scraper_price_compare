@@ -5,8 +5,6 @@ const port = 8080
 const logger = require('./helpers/logger.js')
 const scraper = require('./api/scraperApi.js')
 
-
-
 app.use(logger)
 app.use(express.static('client'))
 app.use(bodyParser.json())
