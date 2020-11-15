@@ -6,12 +6,12 @@ const scraperHn = require('../helpers/web_scraper.js')
 
 async function scrapeProductsByWebsite(req, res) {
     if (req.body.website === 'jb') {
-        let productJb = await scraperJb.scrapeProductJB(req.body.jb_product_url)
+        let productJb = await scraperJb.scrapeProductJB(req.body.product_url)
         res
             .status(200)
             .json({message: 'valid request', data: {'jb': productJb} })
     } else if (req.body.website === 'hn') {
-        let productHn = await scraperHn.HNProductScrape(req.body.hn_product_url)
+        let productHn = await scraperHn.HNProductScrape(req.body.product_url)
         res
             .status(200)
             .json({message: 'valid request', data: {'hn': productHn} })
