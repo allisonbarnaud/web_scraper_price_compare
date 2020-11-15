@@ -25,9 +25,7 @@ app.get('/api/products', (req, res) => {
     res.send('laptops page')
 })
 
-// app.get('/smartphones.html', (req, res) => {
-//     res.send(`phones page ${findAllProducts()}`)
-// })
+
 
 
 
