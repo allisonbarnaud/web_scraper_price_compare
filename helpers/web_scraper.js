@@ -18,7 +18,8 @@ async function HNUrlScrape(url) {
 
         if (index == el.length-1){
             browser.close()
-            console.log(urlArr)
+            // console.log(urlArr)
+            return urlArr
         }
     } 
 }
@@ -69,10 +70,15 @@ async function HNProductScrape(url) {
     //close connection request and displays information
     browser.close()
     HNProductInfo = {name, img, price, discount, rating, category}
-    console.log(HNProductInfo)
+    // console.log(HNProductInfo)
+    return HNProductInfo
 }
 
+module.exports = {
+    HNProductScrape,
+    HNUrlScrape
+}
 
-HNUrlScrape('https://www.harveynorman.com.au/catalogsearch/result/?q=macbook')
+// HNUrlScrape('https://www.harveynorman.com.au/catalogsearch/result/?q=macbook')
 
-HNProductScrape('https://www.harveynorman.com.au/logitech-mx-master-3-wireless-mouse-graphite.html')
+// HNProductScrape('https://www.harveynorman.com.au/logitech-mx-master-3-wireless-mouse-graphite.html')
