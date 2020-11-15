@@ -3,10 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 8080
 const logger = require('./helpers/logger.js')
-const websites = require('./api/websites.js')
-const products = require('./api/products.js')
-const categories = require('./api/categories.js')
-const data = require('./api/data.js')
+const scraper = require('./api/scraperApi.js')
 
 
 
@@ -15,21 +12,7 @@ app.use(express.static('client'))
 app.use(bodyParser.json())
 
 
-app.use('/api/websites', websites)
-app.use('/api/products', products)
-app.use('/api/categories', categories)
-app.use('/api/data', data)
-// routes
-
-app.get('/api/products', (req, res) => {
-    res.send('laptops page')
-})
-
-
-
-
-
-
+app.use('/api/scraper', scraper)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
