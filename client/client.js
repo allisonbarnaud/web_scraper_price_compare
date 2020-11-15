@@ -5,3 +5,9 @@ const laptops = document.querySelector('.laptops');
 const smartphones = document.querySelector('.smartphones');
 const monitors = document.querySelector('.monitors');
 const printers = document.querySelector('.printers');
+
+
+
+axios.get("http://localhost:8080/api/products").then(res => {
+    console.log(res.data)
+})

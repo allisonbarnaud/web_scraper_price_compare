@@ -21,7 +21,7 @@ app.use('/api/categories', categories)
 app.use('/api/data', data)
 // routes
 
-app.get('/api/websites', (req, res) => {
+app.get('/api/products', (req, res) => {
     res.send('laptops page')
 })
 
