@@ -30,7 +30,7 @@ async function scrapeProductJB(url) {
 
     // get the discount
     if (el7 === null || el7 === undefined) {
-        var discount = null
+        var discount = 0;
     } else {
         var discountSale = await el7.getProperty('textContent');
         var discounted = await discountSale.jsonValue();
@@ -38,8 +38,8 @@ async function scrapeProductJB(url) {
     }
 
     // get product image
-    const el4 = await page.$('.product-images img');
-    const src = await el4.getProperty('src');
+    const el4 = await page.$('.product-images > div.product-single__photos > div.slick-initialized.slick-slider > div > div > figure.slick-slide.slick-current.slick-active > a');
+    const src = await el4.getProperty('href');
     const img = await src.jsonValue();
 
     // get product rating 
