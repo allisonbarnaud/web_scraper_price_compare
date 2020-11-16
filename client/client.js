@@ -71,7 +71,6 @@ function scraperSearch(event) {
 
 function scraperProduct(event) {
     event.preventDefault()
-    
     let searchTerm = event.target.textContent
     axios
         .get("/api/scraper/search", { params: {keyword: searchTerm }})
