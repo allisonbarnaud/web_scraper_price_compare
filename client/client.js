@@ -21,6 +21,7 @@ const jbDiscount = document.querySelector('.jb-discount');
 const hnDiscount = document.querySelector('.hn-discount');
 const loader = document.querySelector('.loader');
 const container = document.querySelector('.container');
+const productComparisonH2 = document.querySelector('.product-comparison');
 
 var HNurlAr = []
 var HNimgAr = []
@@ -29,12 +30,12 @@ const renderPopularSearches = () => {
     axios
         .get("/api/searches/limit", { params: { limit: 4 }})
         .then(search => {
-            let searches = search.data.data.searches
+            let searches = search.data.data.searches;
             searches.forEach(keyword => {
-                let btn = document.createElement('button')
-                btn.textContent = keyword
-                btn.classList.add('popular-search')
-                popularSearches.appendChild(btn)
+                let btn = document.createElement('button');
+                btn.textContent = keyword;
+                btn.classList.add('popular-search');
+                container.appendChild(btn);
             })
         })
 }
@@ -53,12 +54,12 @@ function scraperSearch(event) {
             HNurlAr = res.data.data.hn[0]
             HNimgAr = res.data.data.hn[2]
             res.data.data.hn[1].forEach((item, index) => {
-                let div = document.createElement('div')
-                let li = document.createElement('li')
-                list.appendChild(div)
-                div.appendChild(li)
-                li.textContent = item
-                li.dataset.indexNumber = index
+                let div = document.createElement('div');
+                let li = document.createElement('li');
+                list.appendChild(div);
+                div.appendChild(li);
+                li.textContent = item;
+                li.dataset.indexNumber = index;
                 li.addEventListener('click', scraperProduct)
 
                 let img = document.createElement('img')
@@ -71,7 +72,9 @@ function scraperSearch(event) {
 
 function scraperProduct(event) {
     event.preventDefault()
-    let searchTerm = event.target.textContent
+    list.style.display = 'none';
+    loader.classList.add('loading');
+    let searchTerm = event.target.textContent;
     axios
         .get("/api/scraper/search", { params: {keyword: searchTerm }})
         .then(res => {
@@ -81,7 +84,7 @@ function scraperProduct(event) {
                 axios
                     .get("/api/scraper/products", { params: {product_urlHN: hnURL, product_urlJB: jbURL, website: "hn"}})
                     .then(res => {
-                        console.log(res.data.data);
+                        productComparisonH2.textContent = `Product Comparison`;
                         jb.textContent = `Retailer: JB Hi Fi`;
                         jbName.textContent = `Name: ${res.data.data.jb.name}`;
                         jbPrice.textContent = `Price: $${res.data.data.jb.price}`;
@@ -96,7 +99,7 @@ function scraperProduct(event) {
                         hnDiscount.textContent = `Discount: $${res.data.data.hn.discount}`;
                         hnRating.textContent = `Rating: ${res.data.data.hn.rating}`;
                         hnCategory.textContent = `Category: ${res.data.data.hn.category}`;
-                        hnProductImg.src = HNimgAr[event.target.dataset.indexNumber];
+                        loader.classList.remove('loading');
                     }
                 )}
         )
