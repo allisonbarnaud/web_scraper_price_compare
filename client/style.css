@@ -31,7 +31,7 @@ body {
 }
 
 .form-wrap {
-    padding: 20px;
+    padding: 0 20px 0 20px;
     text-align: center;
 }
 
@@ -41,21 +41,23 @@ body {
 
 .container {
     text-align: center;
-    margin: 30px 50px 50px 50px;
+    margin: 0 50px 10px 50px;
 }
 
-.container a {
+button {
     text-decoration: none;
     color: black;
     background-color: #fff;
     padding: 5px;
     border: 1px solid black;
+    font-size: 15px;
     border-radius: 2px;
-    margin: 20px 20px 50px 20px;
+    margin: 0 20px 50px 20px;
     background-color:  rgba(217, 217, 217, 0.5);
 }
 
-.container a:hover {
+button:hover {
+    cursor: pointer;
     background-color:  rgba(217, 217, 217, 1);
 }
 
@@ -77,9 +79,7 @@ img {
 .product-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-div {
+    margin-bottom: 50px;
     padding: 20px;
 }
 
@@ -95,14 +95,21 @@ footer {
 }
 
 .loading {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #3498db;
+    border: 16px solid rgba(217, 217, 217, 1);
+    border-top: 16px solid rgba(40, 75, 99, 1);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 15px;
+    height: 15px;
     animation: spin 2s linear infinite;
+    margin: 0 auto;
   }
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .jb-product-img {
+      width: 50%;
+      display: block;
+      margin: 0 auto 0 auto;
   }

@@ -10,7 +10,6 @@ async function HNUrlScrape(url) {
     const page = await browser.newPage()
     await page.goto(url)
     const el = await page.$$('.product-item .product-info-item .info a');
-    const el2 = await page.$$('.product-item .product-info-item .photo-box a img')
     imgArr = await page.$$eval('.product-item .product-info-item .photo-box a img', elems => elems.map(elem => elem.dataset.srcRetina))
     for (const [index, element] of el.entries()) {
         const text = await element.getProperty('href');
@@ -20,10 +19,11 @@ async function HNUrlScrape(url) {
         urlArr.push(productUrl)
         nameArr.push(name)
         if (index == el.length-1){
-            result.push(urlArr)
-            result.push(nameArr)
-            result.push(imgArr)
-            return result
+            browser.close();
+            result.push(urlArr);
+            result.push(nameArr);
+            result.push(imgArr);
+            return result;
         }
     } 
 }
